@@ -41,6 +41,7 @@
                             // Again you will need your thumbnail class name here
                             // If you don't want this, remove the block between the "--------"          
                             $('.ProductItem-gallery-thumbnails-item-image').css('opacity', "1");
+                            }
                             else {}
                         });
                     // -------
