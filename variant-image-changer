@@ -1,0 +1,48 @@
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+<script>
+    $(function() {
+                // refers to the select dropdown and detects a change in selection
+                // replace the 'Colour' with whatever variant type you have.
+                // IT IS CASE SENSITIVE!
+                $("select[data-variant-option-name='Colour']").on('change', function() {
+                    var name = this.value // Gets the name of the selected variant
+                    if (name !== '') {
+                        // If not empty (so if something is selected) do something
+                        // IMPORTANT: replace ProductItem-gallery-thumbnails-item-image with whatever
+                        // class you found
+
+                        // Reduce the opacity of all images 
+                        $('.ProductItem-gallery-thumbnails-item-image').css('opacity', "0.2");
+
+                        // Set the opacity of the selected variant back to 1
+                        $('.ProductItem-gallery-thumbnails-item-image[alt^="' + name + '"]').css('opacity', "1");
+
+                        // Simulate a click on the first image corresponding the selected variant
+                        // This will change the large image
+                        $('.ProductItem-gallery-thumbnails-item-image[alt^="' + name + '"]').click();
+                    } else {
+                        // This triggers when nothing is selected in the variant selector
+
+                        // Set the opacity of all thumbnails to 1
+                        $('.ProductItem-gallery-thumbnails-item-image').css('opacity', "1");
+                    }
+                });
+                $('.ProductItem-gallery-thumbnails-item-image').click(function() {
+                        // Get the alt name of clicked thumbnail
+                        var altname = $(this).attr('alt');
+
+                        // Get current variant selection (change Colour to your variant nam
+                        var currentselection = $("select[data-variant-option-name='Colour']").val();
+
+                        // --------
+                        // Check if they match
+                        if (altname.indexOf(currentselection) != 0) {
+                            // No match so enable all thumbnails again.
+                            // Again you will need your thumbnail class name here
+                            // If you don't want this, remove the block between the "--------"          
+                            $('.ProductItem-gallery-thumbnails-item-image').css('opacity', "1");
+                            else {}
+                        });
+                    // -------
+                });
+</script>
