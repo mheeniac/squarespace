@@ -4,6 +4,8 @@ This repo contains some squarespace code injections, tested on squarespace's Bri
 ## Shop Product Variant Images
 In suarespace it is possible to add variants for certain items, for example different colours. However, it is not possible to link certain images to these variants. Some solutions have been proposed on the fora but they were not ideal. As I did not even know what jquery was before this issue, I found that due to a lack of explanation I could not get their codes to work. Morever, all those solutions only work if there is only a single image per variant. So I set out to find my own solution and came up with the folowing. 
 
+![](https://github.com/mheeniac/squarespace/blob/master/1.PNG)
+
 #### Features
 This solution will do the following: 
 
