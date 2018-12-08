@@ -13,6 +13,7 @@ This solution will do the following:
 * Enable the use of multiple images per variant
 * Currently supports one variant type
 * It "disables" all thumbnails not matching the selected variant by turning down the opacity
+* If a user clicks on a "disabled" item it will re-enable them
 
 #### How to use
 1. Create a product variant (e.g. Colour) in your shop
