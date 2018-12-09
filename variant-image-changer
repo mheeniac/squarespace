@@ -1,7 +1,8 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 <script>
-    $(function() {
-                // refers to the select dropdown and detects a change in selection
+    (function() {
+        var handleSelection = function() {
+            // refers to the select dropdown and detects a change in selection
                 // replace the 'Colour' with whatever variant type you have.
                 // IT IS CASE SENSITIVE!
                 $("select[data-variant-option-name='Colour']").on('change', function() {
@@ -45,5 +46,12 @@
                             else {}
                         });
                     // -------
-                });
+        };
+
+        // Initialize the fn on site first-load.
+        document.addEventListener("DOMContentLoaded", handleSelection);
+
+        // Reinit. the fn on each new AJAX-loaded page.
+        window.addEventListener("mercury:load", handleSelection);
+    })();
 </script>
