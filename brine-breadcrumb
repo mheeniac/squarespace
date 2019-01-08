@@ -1,0 +1,46 @@
+var updateBreadCrumb = function() {	
+
+	// Creating the extra item in breadcrumb
+	
+	//Grabbing the span item (the little arrow)
+	span_item = $('div.ProductItem-nav-breadcrumb').children()[1];
+	//Grabbing the first link item
+	link_item = $('div.ProductItem-nav-breadcrumb').children()[0];
+	//Appending a new span to the end of the menu
+	$('div.ProductItem-nav-breadcrumb').append(span_item.outerHTML);
+	//Saving that new span to a variable (linked variable)
+	new_span = $('div.ProductItem-nav-breadcrumb').children()[3];
+	//Appending a new link item to the end of the menu
+	$('div.ProductItem-nav-breadcrumb').append(link_item.outerHTML);
+	//Saving that new link to a variable (linked variable)
+	new_link = $('div.ProductItem-nav-breadcrumb').children()[4];
+	
+	// Placing the link after the first arrow
+	$('div.ProductItem-nav-breadcrumb').children()[1].after(new_link);
+	// Placing the span item after the new link
+	$('div.ProductItem-nav-breadcrumb').children()[2].after(new_span);
+	//---------------------------------------------------------------
+	
+	// Finding the category
+	
+	// Getting the static context html
+	var s = $('script[data-name="static-context"]')[0].innerHTML;
+	// Cutting everything before categories
+	s = s.substring(s.indexOf("categorie"));
+	// Extracting the category
+	s = s.substring((s.indexOf("[")+2),(s.indexOf("]")-1));
+	
+	// Setting the text of the newly created breadcrumb link to the name of the category
+	new_link.text = s;
+	
+	// Replacing '&' with '%26' and <space> with '%20' to create the url
+	var s_link = s.replace(/\&/g,'%26');
+	s_link = s_link.replace(/\ /g,'%20');
+	
+	//Adding the name of the store (THIS IS THE SLUG THAT BELONGS TO YOUR SQUARESPACE STORE!)
+	s_link = '/store/?category=' + s_link;
+	
+	// Update the new link
+	new_link.setAttribute('href',s_link);
+	
+};
